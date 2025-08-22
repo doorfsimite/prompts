@@ -206,6 +206,7 @@ Guidelines:
 - **Style**: Concise but comprehensive, avoiding marketing language
 - **Consistency**: Use defined terminology throughout
 - **Practicality**: Focus on actionable, testable requirements
+- **Passive voice**: Always use passive voice. Don't mention "I" or "we". Focus on what should be defined or described, and not the persons envolved on it. Exemple: "it needs to be build", not "we need to build it".
 
 ---
 
