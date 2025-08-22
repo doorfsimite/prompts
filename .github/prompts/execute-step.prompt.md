@@ -13,10 +13,11 @@ Operating rules
   - Tests: Cover happy path, key edge cases, and failure modes. Prefer small, deterministic tests with minimal fixtures.
   - Security: Avoid insecure defaults, sanitize/validate external inputs, protect secrets (do not hardcode), and least-privilege access where applicable.
   - Performance: Use efficient algorithms/data structures; avoid N+1 calls and unnecessary work in hot paths.
-  - Docs: Add succinct docstrings/comments for non-obvious logic and update README
+  - Docs: Add succinct docstrings/comments for non-obvious logic
   - Dependencies: Prefer standard libs; if adding deps, justify, pin versions, and update manifests/lockfiles.
 - Project awareness: If files/paths aren’t specified, locate the appropriate modules by searching the repo and follow established layout patterns. Keep public APIs stable unless the step explicitly allows breaking changes; otherwise, deprecate gracefully.
 - Checkpoints: After roughly 3–5 edits or creating >3 files, pause to ensure build/tests remain green; adjust as needed.
+- Update documenation: Once you've finished the code updates, update the #docs folder to create or update the documentation with the new code changes.
 
 Notes to improve code quality and clarity
 - Favor small, composable functions and clear names aligned with domain language.
