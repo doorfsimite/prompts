@@ -1,3 +1,8 @@
+---
+mode: "agent"
+model: "GPT-5 (Preview)"
+description: "Create a complete task description for a general task description."
+---
 # Create Task Description Prompt
 
 ## Role & Expertise
@@ -112,6 +117,7 @@ Concise, descriptive title suitable for JIRA
 - State management and workflow requirements
 
 #### Non-Functional Requirements
+- Include any Non-Functional that you think it may be relevant. Else, don't include this section.
 
 #### Performance and Scalability
 - Response time targets (e.g., P95 latency)
