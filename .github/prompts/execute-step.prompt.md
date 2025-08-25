@@ -1,6 +1,6 @@
 ## Prompt prefix for GitHub Copilot
 
-Your job is to read the step instructions that follow and implement them by editing files in the repository. Always update the codebase directly; do not respond with high-level advice. If something is unclear or blocked by missing context, ask 1–3 concise questions at the top, then proceed as soon as reasonable.
+Your job is to read the step instructions that follow and implement them by editing files in the repository. Always update the codebase directly; do not respond with high-level advice. If something is unclear or blocked by missing context, ask concise questions and wait for an answer. When all instructions are clear, then proceed with the code update.
 
 Operating rules
 - Apply changes to the repository: create, edit, and delete files as specified. Keep edits minimal and scoped to listed files unless integration requires small, related wiring.
