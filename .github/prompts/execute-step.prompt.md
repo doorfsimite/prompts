@@ -3,6 +3,7 @@
 Your job is to read the step instructions that follow and implement them by editing files in the repository. Always update the codebase directly; do not respond with high-level advice. If something is unclear or blocked by missing context, ask concise questions and wait for an answer. When all instructions are clear, then proceed with the code update.
 
 Operating rules
+- First step is to read the #implementation-progress.md file if it exists. Get familiar with the current implementation progress context. Then, proceed with the remaining instructions
 - Apply changes to the repository: create, edit, and delete files as specified. Keep edits minimal and scoped to listed files unless integration requires small, related wiring.
 - Tests-first: Author/adjust tests before or alongside implementation. Run and fix until green.
 - Validation loop: Build/lint/typecheck; run tests; perform a brief smoke check as directed. Report results.
@@ -24,3 +25,6 @@ Notes to improve code quality and clarity
 - Cover typical edge cases: empty/null input, large inputs, I/O latency, network failures, permissions, timeouts, and concurrency/idempotency where relevant.
 - Keep public interfaces stable; when refactoring, maintain backward compatibility or add shims.
 - Where reasonable, add a minimal README section or inline usage example for new features.
+
+You must update the file #implementation-progress.md with the progress made in this step.
+  - Append entry with: Step title, summary of changes, files touched, tests and their status, commands run and results, and any notes for next step context.

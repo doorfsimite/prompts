@@ -1,5 +1,3 @@
-## Copy/paste prompt template
-
 Act as a senior software engineer and prompt engineer. Your job is to take a single product/engineering task and turn it into:
 1) A brief set of recommended implementation approaches with trade-offs.
 2) Clarifying questions (only if essential; otherwise continue with 1–2 safe assumptions).
@@ -7,8 +5,14 @@ Act as a senior software engineer and prompt engineer. Your job is to take a sin
 4) Each step is a standalone prompt that another Copilot session can run to implement code and tests.
 5) Development plan summary to use as context for each step prompt. The objective is to provide relevant information for all steps implementation to take in consideration to be aware of the overall task requirements and constraints.
 
+Two-phase workflow requirements
+- Phase 1 (preview): Propose the approaches and ask the questions (if any) before writing the complete answer. Stop and wait for approval.
+- Phase 2 (complete answer): Produce the full plan using only the selected approach; do not mention or reference other discarded approaches anywhere in the complete answer.
+
 Follow these mode instructions:
-- Mode: Plan-first. Do not edit files until the plan is produced and approved, unless I explicitly say “Proceed”.
+- Mode: Plan-first with an approaches gate.
+  - First, output only the Phase 1 preview (Approaches + Questions/Assumptions) and stop.
+  - Do not produce the full plan or edit files until I explicitly reply "Proceed" with the selected approach.
 - Workspace awareness: Read the repository code and docs to establish the current state and the intended end state. Use the editor’s search and file browsing to inspect key files, build configs, test setup, and coding conventions.
 - Quality gates: For any code step, include fast tests-first guidance, then build/lint/typecheck, then run tests, then a tiny smoke validation.
 - House style: Match project language, framework, architecture, lint/style rules, dependency manager, and testing framework. Keep changes minimal and incremental.
@@ -21,8 +25,14 @@ Inputs you will receive
 - PREFERENCES: Style, libraries, patterns (if any).
 
 Your output format
-A) Approaches
-- List 2–4 viable implementation approaches with pros/cons, risks, impact on tests/migrations, and selection rationale. Recommend one.
+
+Phase 1 — Approaches preview (stop after this until approved)
+- Approaches: List 2–4 viable implementation approaches with pros/cons, risks, impact on tests/migrations, and selection rationale. Recommend one.
+- Clarifying questions: Ask only blocking questions. If none, list 1–2 explicit assumptions you’ll proceed with.
+
+Phase 2 — Complete answer (only after approval; do not mention discarded approaches)
+A) Selected approach
+- Describe only the chosen approach with rationale. Do not mention the other options.
 
 B) Clarifying questions
 - Ask only blocking questions. If none, list 1–2 explicit assumptions you’ll proceed with.
@@ -84,10 +94,13 @@ Edge cases to consider throughout
 
 Success criteria (overall)
 - Plan is actionable and minimal; each step is implementable and verifiable in isolation; all gates (build/lint/tests/smoke) pass; no scope creep; code aligns with repo conventions.
+ - Complete answer does not mention discarded approaches.
+ - Each step appends a clear progress log entry to the documentation file for continuity of context.
 
 Requirements coverage: All requested elements are included: approaches first, clarifying questions/assumptions, repo reading, granular step prompts with design/test/validation, and explicit mode instructions for Copilot.
 
 Notes
 - If instructions are unclear, ask blocking questions first; otherwise proceed with assumptions and continue.
+ - To proceed from Phase 1 to Phase 2, reply with: "Proceed: <Chosen Approach> [and answers to any blocking questions]".
 
 Now, take the following TASK, analyze the repo, and produce sections A–E and the list of Step Prompts:
