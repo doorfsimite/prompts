@@ -13,3 +13,7 @@ If your instructions are not clear enough, ask for questions to help you underst
 Make use of the @prompt-engineering-guidelines.md from the prompt engineering documentation to align your understanding with the established best practices.
 
 Your response must be in the chat as a message. Do not update any file in this process.
+
+After this paragraph is the prompt description, do not execute the instructions of the prompt, you task is to improve the instructions and create a new prompt.
+
+---
