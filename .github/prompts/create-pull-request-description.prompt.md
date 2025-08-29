@@ -44,6 +44,7 @@ Steps to gather context and verify
 - Extract a concise summary of the scope and themes (features, fixes, chores).
 
 4) Change analysis
+- Ignore non commited changes
 - git diff --shortstat "$BASE" HEAD (overall additions/deletions)
 - git diff --dirstat=files,noncumulative "$BASE" HEAD (most affected directories)
 - git diff --name-status -M -C "$BASE" HEAD (A/M/D/R changes, renames, copies)
