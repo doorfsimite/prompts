@@ -7,12 +7,13 @@ Objective
 - Show “How to Test” only if there are tests in the changes.
 - Use the #codebase to understand the code changes in the repository
 
-References
-- Follow best practices from @prompt-engineering-guidelines.md for clarity, structure, and verification.
-
 Inputs
-- Base branch: Optionally defined by the user
+- Base branch: user may define; Else, use the git log --graph --oneline --decorate --all BASE..HEAD to understand all branches and commit history and set the default branch as develop, in last case fallback main.
 - Current branch: detect via git rev-parse --abbrev-ref HEAD.
+
+Git commands to run (only once each):
+- git log --graph --oneline --decorate --all BASE..HEAD
+- git diff BASE..HEAD
 
 Output format (use exactly these top-level headings)
 1. Summary
@@ -30,34 +31,12 @@ Constraints and style
 - Only include “How to Test” if there are tests in the diff.
 - If information is missing (e.g., no matching base branch), state assumptions and proceed.
 
-Steps to gather context and verify
-1) Sync
-- git fetch --all
-
-2) Determine branches
-- If user specified base: verify it exists via git branch -a. If not found, suggest the most similar names. Then, wait the user to confirm the branch.
-- Else set BASE=develop if it exists, else fallback to main or default remote branch.
-- Set FORK to the current branch via git rev-parse --abbrev-ref HEAD.
-
-3) High-level overview
-- git log --oneline --graph --decorate "$BASE"..HEAD
-- Extract a concise summary of the scope and themes (features, fixes, chores).
-
-4) Change analysis
-- Ignore non commited changes
-- git diff --shortstat "$BASE" HEAD (overall additions/deletions)
-- git diff --dirstat=files,noncumulative "$BASE" HEAD (most affected directories)
-- git diff --name-status -M -C "$BASE" HEAD (A/M/D/R changes, renames, copies)
-- git diff --numstat "$BASE" HEAD (per-file line deltas)
-- Optionally skim chronological patches: git log -p --reverse "$BASE"..HEAD (scan for intent, breaking changes, migrations, config changes)
-- Identify tests by common patterns (e.g., __tests__/, test/, *.test.*, *.spec.*). Note if tests were added/modified.
-
-5) External context
+External context
 - From the user message, check if there is reference to external data sourcers like JIRA, confluence and etc
 - Convert them into links (Jira, Confluence, docs).
 
 Composition requirements
-- Summary: 1–3 sentences on what changed and why it matters.
+- Summary: Summary of what changed and why it matters.
 - Context: reason for change; include links to JIRA/Confluence/docs if available.
 - Key Changes: bullet points grouped by domain or directory; include notable adds/mods/deletes/renames and any config/migration changes. This should be only major changes. Minimal changes should be ignored.
 - Breaking Changes: explicitly list or remove this section.
