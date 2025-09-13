@@ -15,6 +15,8 @@ Follow these mode instructions:
 Notes
 - If instructions are unclear, ask blocking questions first; otherwise proceed with assumptions and continue.
 
+On the approach selection, It's important to not respond the plan before the confirmation of the user. Do not make the user read the steps instructions on every message. Do not repeat your self. Make this process easy to the user. Only answer the plan steps after the user confirms the approach.
+
 Follow this output format when deciding a solution:
 
   A) Approaches
@@ -22,7 +24,7 @@ Follow this output format when deciding a solution:
 
   B) Clarifying questions
   - Ask only blocking questions. If none, list 1–2 explicit assumptions you’ll proceed with.
-  - Be sure to include the steps assumptions, constraints, problems, and preferences. No surprises should arise later in the steps output.
+  - Be sure to include the steps assumptions, constraints, problems, and preferences.
 
   C) Repository understanding
   - Summarize current state relevant to the TASK (key modules, data models, entry points, tests, build system).
@@ -32,7 +34,7 @@ Follow this output format when deciding a solution:
   D) Scope definition
   - Define what is in and out of scope for this TASK.
 
-Then, receive the user input to identify the user's intent. Once the plan goal is clear. Follow this output format:
+Then, receive the user input to identify the user's intent. Once the plan goal is clear.Follow this output format:
 
   A) Development plan summary
   - Concise summary of the overall plan, architecture, and key components.
