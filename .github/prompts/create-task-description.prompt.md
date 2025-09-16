@@ -67,14 +67,7 @@ Concise, descriptive title suitable for JIRA
 Bullet list of Features and capabilities with rationale. Include business rules, logic, and constraints.
 Description of main user journeys and workflows.
 
-#### Scope and Boundaries
-
-##### In Scope
-- Specific capabilities to be delivered
-- Included platforms and use cases
-- Required integrations and features
-
-##### Out of Scope
+#### Out of Scope
 - Explicitly excluded functionality
 - Future enhancements for later releases
 - Related but separate features
