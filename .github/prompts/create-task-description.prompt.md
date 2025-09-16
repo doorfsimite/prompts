@@ -1,6 +1,6 @@
 ---
 mode: "agent"
-model: "GPT-5 (Preview)"
+model: "GPT-5"
 description: "Create a complete task description for a general task description."
 ---
 # Create Task Description Prompt
@@ -62,6 +62,7 @@ If information is missing or unclear:
 - **Ask prioritized clarifying questions** (max 10, focusing on highest-impact gaps)
 - **Make explicit assumptions** to proceed, clearly marked as [Assumption] and linked to the questions they address
 - Proceed with specification while tracking open questions
+- Do not proceed if critical information is missing that would lead to incorrect implementation. In this case, ask for the missing information first. Else, always proceed with assumptions. It's better to propose a incomplete specification with open questions than to halt.
 
 ### 3. Comprehensive Specification Development
 Create implementation-ready documentation following the structure below
@@ -74,17 +75,18 @@ Perform ambiguity scan and consistency checks, resolving conflicts or marking as
 **If inputs are complete**: Provide full specification following the structure above
 
 **If inputs have gaps**: 
-1. Provide "V1 Specification with Assumptions"
-2. List prioritized clarifying questions
-3. Clearly mark all assumptions made
-4. Offer to provide "V2 Final Specification" after receiving answers
+1. List prioritized clarifying questions
+2. Clearly mark all assumptions made
+3. After clarification, proceed with the specification
 
-## Best Practices Integration
 
-- Include both happy path and error scenarios in all planning
-- Think holistically about user experience across all touchpoints
-- Plan for scalability, maintainability, and future enhancement
-- Ensure specifications support iterative development and testing
+## Output Format and Style
+
+- **Format**: Structured Markdown with clear section headers
+- **Language**: Clear, objective, specific, and implementation-focused. Content should be suitable for tracking work in Scrum and for use in JIRA tickets. The sections title, description, core functionality, scope boundaries and Visual Representation should be suitable for a JIRA ticket description. They should not be too long, but also not miss any important information. 
+- **Style**: Concise but comprehensive, avoiding marketing language. Do not repeat yourself. The same information should not be in multiple sections.
+- **Consistency**: Use defined terminology throughout
+- **Passive voice**: Always use passive voice. Don't mention "I" or "we". Focus on what should be defined or described, and not the persons envolved on it. Exemple: "it needs to be build", not "we need to build it".
 
 ## Required Output Structure
 
@@ -94,65 +96,9 @@ Concise, descriptive title suitable for JIRA
 ### Description
 - a complete and comprehensive description the problem and desired change in plain language. Use multiple paragraphs if needed.
 
-### Acceptance Criteria (Gherkin Format)
-- **6-15 Given/When/Then scenarios** covering:
-  - Happy path scenarios
-  - Edge cases and error conditions
-  - Validation rules and constraints
-  - Permission and security scenarios
-  - At least one non-functional criterion (performance, accessibility)
-
-### Detailed Development description
-
 #### Core Functionality
-- **Features/Capabilities**: Bullet list of discrete capabilities with rationale
-- **Primary User Flows**: Description of main user journeys and workflows
-- **Data Requirements**: Key entities, fields, relationships, and authoritative sources
-- **Business Rules**: Logic, validation rules, and constraints
-
-#### Functional Requirements
-- Detailed list of what the system must do
-- Input/output specifications and data handling
-- Integration requirements and API contracts
-- State management and workflow requirements
-
-#### Non-Functional Requirements
-- Include any Non-Functional that you think it may be relevant. Else, don't include this section.
-
-#### Performance and Scalability
-- Response time targets (e.g., P95 latency)
-- Throughput and capacity requirements
-- Availability and SLO targets
-
-#### Additional Technical Considerations 
-Only include this section if there is an relevant additional information. If the content of this section is just a confirmation of the response content, ignore this section. Else, include only what is relevant
-
-##### Dependencies and Integrations
-- Internal/external services and APIs
-- Rate limits, retries, and timeout handling
-- Versioning and migration strategy
-- Third-party service requirements
-
-##### Implementation Constraints
-- Technology stack limitations
-- Database schema considerations
-- Deployment and infrastructure needs
-- Performance optimization requirements
-
-#### Risk Management
-Only include this section if there is an relevant additional information. If the content of this section is just a confirmation of the response content, ignore this section. Else, include only what is relevant
-
-##### Identified Risks
-- Technical risks with likelihood/impact assessment
-- Business and user experience risks
-- Dependency and integration risks
-
-##### Mitigation Strategies
-- Specific plans to address each identified risk
-- Contingency plans for high-impact scenarios
-- Monitoring and early warning indicators
-
-### Task understanding analysis
+Bullet list of Features and capabilities with rationale. Include business rules, logic, and constraints.
+Description of main user journeys and workflows.
 
 #### Scope and Boundaries
 
@@ -166,24 +112,6 @@ Only include this section if there is an relevant additional information. If the
 - Future enhancements for later releases
 - Related but separate features
 
-#### Open Questions and Assumptions
-
-##### Assumptions
-- Numbered list of assumptions made to proceed
-- Each labeled [Assumption] and linked to questions
-- Impact if assumption proves incorrect
-
-##### Open Questions
-- Numbered list of unresolved questions
-- Priority level and impact of each question
-- Suggested approach for resolution
-
-#### Ambiguity Scan
-Only include this section if there is ambiguity on your answer
-- No "should/could/might" language in requirements (use MUST/SHALL)
-- All terms defined in glossary
-- Each requirement is testable and measurable
-- No room for multiple interpretations
 
 ### Visual Representation
 
@@ -199,14 +127,47 @@ Guidelines:
 - Include key actors, systems, and decision points
 - Align with textual description
 
-## Output Format and Style
+---
 
-- **Format**: Structured Markdown with clear section headers
-- **Language**: Specific, measurable, implementation-focused
-- **Style**: Concise but comprehensive, avoiding marketing language
-- **Consistency**: Use defined terminology throughout
-- **Practicality**: Focus on actionable, testable requirements
-- **Passive voice**: Always use passive voice. Don't mention "I" or "we". Focus on what should be defined or described, and not the persons envolved on it. Exemple: "it needs to be build", not "we need to build it".
+### Task understanding analysis
+
+#### Open Questions and Assumptions
+
+##### Assumptions
+- Numbered list of assumptions made to proceed
+- Each labeled [Assumption] and linked to questions
+- Impact if assumption proves incorrect
+
+##### Open Questions
+- Numbered list of unresolved questions
+- Priority level and impact of each question
+- Suggested approach for resolution
+
+---
+
+### Technical Requirements
+
+#### Functional Requirements
+- Detailed list of what the system must do
+- Input/output specifications and data handling
+- Integration requirements and API contracts
+- State management and workflow requirements
+
+#### Additional Technical Considerations
+Only include this section if there is an relevant additional information. If the content of this section is just a confirmation of the response content, ignore this section. Else, include only what is relevant
+
+#### Risk Management
+Only include this section if there is an relevant additional information. If the content of this section is just a confirmation of the response content, ignore this section. Else, include only what is relevant
+
+##### Identified Risks
+- Technical risks with likelihood/impact assessment
+- Business and user experience risks
+- Dependency and integration risks
+
+##### Mitigation Strategies
+- Specific plans to address each identified risk
+- Contingency plans for high-impact scenarios
+- Monitoring and early warning indicators
 
 ---
 
