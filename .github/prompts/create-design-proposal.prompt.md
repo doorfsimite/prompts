@@ -6,7 +6,7 @@ Task
 
 How to proceed: This conversation will ideally have at least 2 iterations:
 1) First, define options to implement.
-2) Then, after feedback, produce the full design proposal.
+2) Then, after feedback, produce the full design proposal. Take in consideration the current #codebase, architecture, and constraints. Read all the documentation in the repo to understand the context. Gather has much information as possible for a complete plan.
 
 Output format for phase 1 (defining options)
 
