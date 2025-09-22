@@ -73,5 +73,6 @@ Command/Execution
 
 Clarifying questions (only if truly blocking)
 - Ask up to 5 prioritized questions if the input is ambiguous or conflicts with repo facts. Otherwise, proceed with [Assumption]s.
+- Do not include the questions in the files content, add it only on the chat messages.
 
 Input content is bellow:
