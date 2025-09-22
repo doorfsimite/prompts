@@ -115,11 +115,3 @@ Guidelines:
 
 #### Additional Technical Considerations
 Only include this section if there is an relevant additional information. If the content of this section is just a confirmation of the response content, ignore this section. Else, include only what is relevant
-
----
-
-## Example Usage
-
-**Input**: "We need a login feature for our app"
-
-**Expected Output**: Complete specification following the full structure above, transforming this simple request into a comprehensive, implementable feature definition with all sections populated based on reasonable assumptions and industry best practices.
