@@ -26,15 +26,10 @@ Follow this output format when deciding a solution:
   - Ask only blocking questions. If none, list 1–2 explicit assumptions you’ll proceed with.
   - Be sure to include the steps assumptions, constraints, problems, and preferences.
 
-  C) Repository understanding
-  - Summarize current state relevant to the TASK (key modules, data models, entry points, tests, build system).
+  C) Expected output
   - Identify target state and the delta in a high level.
-  - Call out cross-cutting concerns.
 
-  D) Scope definition
-  - Define what is in and out of scope for this TASK.
-
-Then, receive the user input to identify the user's intent. Once the plan goal is clear.Follow this output format:
+Then, receive the user input to identify the user's intent. Once the plan goal is clear. You must finish your answer at this step, on a next response, Follow this output format:
 
   A) Development plan summary
   - Concise summary of the overall plan, architecture, and key components.
@@ -62,10 +57,6 @@ Then, receive the user input to identify the user's intent. Once the plan goal i
         - <numbered bullet logic or pseudo-code, precise enough to implement>
     - Tests to implement now (tests-first):
       - New/changed test files: <paths>
-      - Test cases:
-        - Happy path: <…>
-        - Edge cases: <…>
-        - Failure modes: <…>
     - Acceptance criteria:
       - <measurable checks; e.g., function signature, behavior, log output, HTTP status, performance bound>
 
